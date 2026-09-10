@@ -1,1 +1,131 @@
-<p>dashboard hola!</p>
+<div class="dashboard-container">
+
+  <!-- HEADER -->
+  <div class="dashboard-header">
+    <div>
+      <h1>Panel de control</h1>
+      <p>Resumen general de tu tienda</p>
+    </div>
+
+    <div class="selector-rango">
+      <button
+        class="rango-btn"
+        [class.rango-activo]="rangoSeleccionado === '7dias'"
+        (click)="cambiarRango('7dias')"
+      >
+        7 días
+      </button>
+      <button
+        class="rango-btn"
+        [class.rango-activo]="rangoSeleccionado === '30dias'"
+        (click)="cambiarRango('30dias')"
+      >
+        30 días
+      </button>
+      <button
+        class="rango-btn"
+        [class.rango-activo]="rangoSeleccionado === '90dias'"
+        (click)="cambiarRango('90dias')"
+      >
+        90 días
+      </button>
+    </div>
+  </div>
+
+  <!-- MÉTRICAS -->
+  <div class="grid-metricas">
+    <div class="card-metrica" *ngFor="let metrica of metricas">
+      <div class="metrica-icono" [style.background-color]="metrica.color + '20'" [style.color]="metrica.color">
+        {{ metrica.icono }}
+      </div>
+      <div class="metrica-info">
+        <p class="metrica-titulo">{{ metrica.titulo }}</p>
+        <h2 class="metrica-valor">{{ metrica.valor }}</h2>
+        <span class="metrica-cambio" [class.cambio-positivo]="metrica.cambio >= 0" [class.cambio-negativo]="metrica.cambio < 0">
+          {{ metrica.cambio >= 0 ? '↑' : '↓' }} {{ metrica.cambio >= 0 ? '+' : '' }}{{ metrica.cambio }}%
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="dashboard-grid">
+
+    <!-- PEDIDOS RECIENTES -->
+    <div class="panel pedidos-panel">
+      <div class="panel-header">
+        <h3>Pedidos recientes</h3>
+        <a href="#" class="link-ver-todos">Ver todos</a>
+      </div>
+
+      <div class="tabla-wrapper">
+        <table class="tabla-pedidos">
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Cliente</th>
+              <th>Fecha</th>
+              <th>Total</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pedido of pedidosRecientes">
+              <td class="celda-id">{{ pedido.id }}</td>
+              <td>{{ pedido.cliente }}</td>
+              <td class="celda-fecha">{{ pedido.fecha }}</td>
+              <td class="celda-total">{{ formatearPrecio(pedido.total) }}</td>
+              <td>
+                <span class="badge-estado" [ngClass]="claseEstado(pedido.estado)">
+                  {{ pedido.estado }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ALERTAS DE STOCK -->
+    <div class="panel stock-panel">
+      <div class="panel-header">
+        <h3>⚠️ Alertas de stock bajo</h3>
+      </div>
+
+      <div class="lista-alertas">
+        <div class="alerta-item" *ngFor="let alerta of alertasStock">
+          <div class="alerta-info">
+            <p class="alerta-nombre">{{ alerta.nombre }}</p>
+            <p class="alerta-cantidad">{{ alerta.stock }} / {{ alerta.stockMinimo }} unidades</p>
+          </div>
+          <div class="barra-stock">
+            <div class="barra-stock-relleno" [style.width.%]="porcentajeStock(alerta)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTOS MÁS VENDIDOS -->
+    <div class="panel productos-panel">
+      <div class="panel-header">
+        <h3>Productos más vendidos</h3>
+        <a href="#" class="link-ver-todos">Ver todos</a>
+      </div>
+
+      <div class="lista-productos-top">
+        <div class="producto-top-item" *ngFor="let producto of productosTop">
+          <img [src]="producto.imagen" [alt]="producto.nombre" />
+          <div class="producto-top-info">
+            <p class="producto-top-nombre">{{ producto.nombre }}</p>
+            <p class="producto-top-categoria">{{ producto.categoria }}</p>
+          </div>
+          <div class="producto-top-datos">
+            <p class="producto-top-unidades">{{ producto.unidadesVendidas }} vendidos</p>
+            <p class="producto-top-ingresos">{{ formatearPrecio(producto.ingresos) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
