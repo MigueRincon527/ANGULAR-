@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { Auth } from '../../services/auth'; // ajusta la ruta según tu estructura
 
 @Component({
   selector: 'app-registro',
@@ -21,7 +22,8 @@ export class Registro {
   cargando: boolean = false;
   errorMensaje: string = '';
 
-  constructor(private router: Router) {}
+  private router = inject(Router);
+  private authService = inject(Auth);
 
   togglePassword(): void {
     this.mostrarPassword = !this.mostrarPassword;
@@ -79,17 +81,31 @@ export class Registro {
     if (!this.validarFormulario()) return;
 
     this.cargando = true;
+    this.errorMensaje = '';
 
-    // Aquí llamarías a tu AuthService real
-    setTimeout(() => {
-      this.cargando = false;
-      console.log('Usuario registrado:', {
-        nombre: this.nombre,
-        email: this.email,
-        password: this.password
-      });
-      // this.router.navigate(['/login']);
-    }, 1200);
+    const nuevoUsuario = {
+      nombre: this.nombre,
+      email: this.email,
+      password: this.password
+    };
+
+    this.authService.register(nuevoUsuario).subscribe({
+      next: (response: any) => {
+        this.cargando = false;
+
+        // authController.registrar ya devuelve token + usuario,
+        // así que podemos loguear al usuario automáticamente
+        const token = response.token;
+        const rol = response.usuario.rol;
+
+        this.authService.saveToken(token, rol);
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.cargando = false;
+        this.errorMensaje = err.error?.mensaje || 'Error al registrar usuario. Intenta de nuevo.';
+      }
+    });
   }
 
   registrarConGoogle(): void {

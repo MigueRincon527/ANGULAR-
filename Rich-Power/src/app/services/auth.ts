@@ -10,9 +10,15 @@ export class Auth{
     private apiUrl : string = 'http://localhost:3000';
     private http = inject(HttpClient);
 
-    register(data : any){
-        return this.http.post(this.apiUrl + '/routes/usuariosRoutes', data)
+    // Agregar en auth.ts, dentro de la clase Auth
+
+    register(data: any) {
+    return this.http.post(`${this.apiUrl}/api/auth/register`, data);
     }
+
+    /*register(data : any){
+        return this.http.post(this.apiUrl + '/routes/usuariosRoutes', data)
+    }*/
     login (data : any){
         return this.http.post(this.apiUrl + '/api/auth/login', data)
     }
@@ -59,5 +65,6 @@ export class Auth{
         return null;
     }
 }
+
 }
 
