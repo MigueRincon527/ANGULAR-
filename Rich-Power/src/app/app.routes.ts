@@ -8,6 +8,7 @@ import { CatalogoPreentrenos } from './Components/catalogo-preentrenos/catalogo-
 import { CatalogoAccesorios } from './Components/catalogo-accesorios/catalogo-accesorios';
 import { Carrito } from './Components/carrito/carrito';
 import { Dashboard } from './Components/dashboard/dashboard';
+import { adminGuard } from './guards/admin.guards';
 
 export const routes: Routes = [
     //Ruta principal Home
@@ -21,5 +22,11 @@ export const routes: Routes = [
     {path : 'pre-entrenos', component : CatalogoPreentrenos},
     {path : 'accesorios', component : CatalogoAccesorios},
     {path : 'carrito', component : Carrito},
-    {path : 'dashboard', component : Dashboard}
+
+    //ruta protegida
+    {path : 'dashboard', component : Dashboard, canActivate : [adminGuard]},
+
+    //Ruta principal Home
+    {path :'', redirectTo : 'home', pathMatch: 'full'},
+    {path : '**', redirectTo : 'home' }
 ];
