@@ -7,6 +7,7 @@ import { CatalogoCreatinas } from './Components/catalogo-creatinas/catalogo-crea
 import { CatalogoPreentrenos } from './Components/catalogo-preentrenos/catalogo-preentrenos';
 import { CatalogoAccesorios } from './Components/catalogo-accesorios/catalogo-accesorios';
 import { Carrito } from './Components/carrito/carrito';
+import { Dashboard } from './Components/dashboard/dashboard';
 
 export const routes: Routes = [
     //Ruta principal Home
@@ -20,5 +21,5 @@ export const routes: Routes = [
     {path : 'pre-entrenos', component : CatalogoPreentrenos},
     {path : 'accesorios', component : CatalogoAccesorios},
     {path : 'carrito', component : Carrito},
-
+    {path : 'dashboard', component : Dashboard}
 ];
