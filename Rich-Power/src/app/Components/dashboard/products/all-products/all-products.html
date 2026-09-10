@@ -1,0 +1,48 @@
+<div class="productos-container">
+  <div class="productos-header">
+    <div>
+      <h1>Productos</h1>
+      <p>Explora nuestro catálogo</p>
+    </div>
+    <a *ngIf="esAdmin" routerLink="/dashboard/productos/nuevo" class="btn-nuevo">
+      + Nuevo producto
+    </a>
+  </div>
+
+  <div class="mensaje-error" *ngIf="errorMensaje">
+    ⚠️ {{ errorMensaje }}
+  </div>
+
+  <div class="cargando" *ngIf="cargando">
+    Cargando productos...
+  </div>
+
+  <div class="grid-productos" *ngIf="!cargando && productos.length > 0">
+    <div class="tarjeta-producto" *ngFor="let producto of productos">
+      <img [src]="producto.imagen" [alt]="producto.nombre" />
+
+      <div class="tarjeta-contenido">
+        <span class="etiqueta-categoria">{{ producto.categoria }}</span>
+        <h3>{{ producto.nombre }}</h3>
+        <p class="descripcion-corta">{{ producto.descripcion }}</p>
+        <div class="tarjeta-footer">
+          <span class="precio">${{ producto.precio }}</span>
+          <a [routerLink]="['/productos', producto._id]" class="btn-ver">Ver más</a>
+        </div>
+
+        <span class="etiqueta-agotado" *ngIf="!producto.disponible || producto.cantidad === 0">
+          Agotado
+        </span>
+
+        <div class="acciones-admin" *ngIf="esAdmin">
+          <a [routerLink]="['/dashboard/productos/editar', producto._id]" class="btn-editar">Editar</a>
+          <button class="btn-eliminar" (click)="eliminarProducto(producto._id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sin-productos" *ngIf="!cargando && productos.length === 0">
+    No hay productos disponibles.
+  </div>
+</div>

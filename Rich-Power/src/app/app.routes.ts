@@ -7,7 +7,7 @@ import { CatalogoCreatinas } from './Components/catalogo-creatinas/catalogo-crea
 import { CatalogoPreentrenos } from './Components/catalogo-preentrenos/catalogo-preentrenos';
 import { CatalogoAccesorios } from './Components/catalogo-accesorios/catalogo-accesorios';
 import { Carrito } from './Components/carrito/carrito';
-import { Dashboard } from './Components/dashboard/dashboard';
+import { Dashboard } from './Components/dashboard/admin/dashboard';
 import { adminGuard } from './guards/admin.guards';
 
 export const routes: Routes = [

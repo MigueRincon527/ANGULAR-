@@ -1,0 +1,66 @@
+<div class="editar-container">
+  <div class="editar-card">
+
+    <div class="editar-header">
+      <h1>Editar usuario</h1>
+      <p>Actualiza la información del usuario</p>
+    </div>
+
+    <div class="mensaje-error" *ngIf="errorMensaje">
+      ⚠️ {{ errorMensaje }}
+    </div>
+
+    <div class="mensaje-exito" *ngIf="exitoMensaje">
+      ✅ {{ exitoMensaje }}
+    </div>
+
+    <div class="cargando" *ngIf="cargando">
+      Cargando información del usuario...
+    </div>
+
+    <form (ngSubmit)="guardarCambios()" #editarForm="ngForm" *ngIf="!cargando && !errorMensaje">
+
+      <div class="campo-form">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="nombre"
+          required
+        />
+      </div>
+
+      <div class="campo-form">
+        <label for="email">Correo electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        />
+      </div>
+
+      <div class="campo-form">
+        <label for="role">Rol</label>
+        <select id="role" name="role" [(ngModel)]="role">
+          <option value="cliente">Cliente</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <div class="botones-form">
+        <button type="button" class="btn-cancelar" (click)="cancelar()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn-guardar" [disabled]="guardando">
+          <span *ngIf="!guardando">Guardar cambios</span>
+          <span *ngIf="guardando">Guardando...</span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

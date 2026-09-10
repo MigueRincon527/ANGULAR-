@@ -1,0 +1,38 @@
+<div class="info-container">
+
+  <div class="mensaje-error" *ngIf="errorMensaje">
+    ⚠️ {{ errorMensaje }}
+  </div>
+
+  <div class="cargando" *ngIf="cargando">
+    Cargando producto...
+  </div>
+
+  <div class="info-card" *ngIf="!cargando && producto">
+    <a routerLink="/productos" class="btn-volver">← Volver al catálogo</a>
+
+    <div class="info-contenido">
+      <div class="info-imagen">
+        <img [src]="producto.imagen" [alt]="producto.nombre" />
+      </div>
+
+      <div class="info-detalles">
+        <span class="etiqueta-categoria">{{ producto.categoria }}</span>
+        <h1>{{ producto.nombre }}</h1>
+        <p class="info-descripcion">{{ producto.descripcion }}</p>
+
+        <div class="info-precio-stock">
+          <span class="precio">${{ producto.precio }}</span>
+          <span class="stock" [class.stock-bajo]="producto.cantidad < 10">
+            {{ producto.disponible && producto.cantidad > 0 ? producto.cantidad + ' disponibles' : 'Sin stock' }}
+          </span>
+        </div>
+
+        <button class="btn-agregar" [disabled]="!producto.disponible || producto.cantidad === 0">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

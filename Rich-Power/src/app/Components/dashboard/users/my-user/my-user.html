@@ -1,0 +1,43 @@
+<div class="perfil-container">
+  <div class="perfil-header">
+    <h1>Mi perfil</h1>
+    <p>Información de tu cuenta</p>
+  </div>
+
+  <div class="mensaje-error" *ngIf="errorMensaje">
+    ⚠️ {{ errorMensaje }}
+  </div>
+
+  <div class="cargando" *ngIf="cargando">
+    Cargando tu información...
+  </div>
+
+  <div class="perfil-card" *ngIf="!cargando && usuario">
+    <div class="perfil-avatar">
+      {{ usuario.nombre?.charAt(0) }}
+    </div>
+
+    <div class="perfil-datos">
+      <div class="dato">
+        <span class="etiqueta">Nombre</span>
+        <span class="valor">{{ usuario.nombre }}</span>
+      </div>
+
+      <div class="dato">
+        <span class="etiqueta">Correo</span>
+        <span class="valor">{{ usuario.email }}</span>
+      </div>
+
+      <div class="dato">
+        <span class="etiqueta">Rol</span>
+        <span class="valor badge" [class.badge-admin]="usuario.role === 'admin'">
+          {{ usuario.role }}
+        </span>
+      </div>
+    </div>
+
+    <a [routerLink]="['/dashboard/usuarios/editar', usuario._id]" class="btn-editar-perfil">
+      Editar mi información
+    </a>
+  </div>
+</div>

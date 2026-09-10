@@ -1,0 +1,77 @@
+<div class="form-container">
+  <div class="form-card">
+
+    <div class="form-header">
+      <h1>Nuevo producto</h1>
+      <p>Agrega un producto al catálogo</p>
+    </div>
+
+    <div class="mensaje-error" *ngIf="errorMensaje">
+      ⚠️ {{ errorMensaje }}
+    </div>
+
+    <div class="mensaje-exito" *ngIf="exitoMensaje">
+      ✅ {{ exitoMensaje }}
+    </div>
+
+    <form (ngSubmit)="crearProducto()" #productoForm="ngForm">
+
+      <div class="campo-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" placeholder="Nombre del producto" />
+      </div>
+
+      <div class="campo-form">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" [(ngModel)]="descripcion" rows="3" placeholder="Describe el producto"></textarea>
+      </div>
+
+      <div class="fila-doble">
+        <div class="campo-form">
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" name="precio" [(ngModel)]="precio" placeholder="0" min="0" />
+        </div>
+
+        <div class="campo-form">
+          <label for="cantidad">Cantidad</label>
+          <input type="number" id="cantidad" name="cantidad" [(ngModel)]="cantidad" placeholder="0" min="0" />
+        </div>
+      </div>
+
+      <div class="campo-form">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" [(ngModel)]="categoria">
+          <option value="" disabled selected>Selecciona una categoría</option>
+          <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+
+      <div class="campo-form">
+        <label for="imagen">URL de imagen</label>
+        <input type="text" id="imagen" name="imagen" [(ngModel)]="imagen" placeholder="https://..." />
+      </div>
+
+      <div class="campo-form">
+        <label for="sku">SKU (opcional)</label>
+        <input type="text" id="sku" name="sku" [(ngModel)]="sku" placeholder="Código único del producto" />
+      </div>
+
+      <div class="campo-checkbox">
+        <label class="checkbox-label">
+          <input type="checkbox" name="disponible" [(ngModel)]="disponible" />
+          Disponible para la venta
+        </label>
+      </div>
+
+      <div class="botones-form">
+        <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn-guardar" [disabled]="guardando">
+          <span *ngIf="!guardando">Crear producto</span>
+          <span *ngIf="guardando">Guardando...</span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

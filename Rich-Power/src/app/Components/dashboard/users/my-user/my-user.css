@@ -1,0 +1,113 @@
+.perfil-container {
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.perfil-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.perfil-header h1 {
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.perfil-header p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.mensaje-error {
+  background-color: #fdecea;
+  color: #c0392b;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.cargando {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+
+.perfil-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.perfil-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ff6b35;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  text-transform: uppercase;
+}
+
+.perfil-datos {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.dato {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.etiqueta {
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.valor {
+  color: #1a1a1a;
+  font-size: 0.92rem;
+}
+
+.badge {
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-admin {
+  background-color: #fff0e6;
+  color: #ff6b35;
+}
+
+.btn-editar-perfil {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #ff6b35;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.btn-editar-perfil:hover {
+  background-color: #e85a2a;
+}

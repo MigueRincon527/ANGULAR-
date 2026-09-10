@@ -1,0 +1,124 @@
+.editar-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.editar-card {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.editar-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.editar-header h1 {
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.editar-header p {
+  color: #888;
+  font-size: 0.88rem;
+}
+
+.mensaje-error {
+  background-color: #fdecea;
+  color: #c0392b;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.mensaje-exito {
+  background-color: #e6f7ee;
+  color: #1e8e5a;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.cargando {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+
+.campo-form {
+  margin-bottom: 1.2rem;
+}
+
+.campo-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.campo-form input,
+.campo-form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.campo-form input:focus,
+.campo-form select:focus {
+  outline: none;
+  border-color: #ff6b35;
+}
+
+.botones-form {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.btn-cancelar,
+.btn-guardar {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cancelar {
+  background-color: #f2f2f2;
+  color: #555;
+}
+
+.btn-cancelar:hover {
+  background-color: #e5e5e5;
+}
+
+.btn-guardar {
+  background-color: #ff6b35;
+  color: #fff;
+}
+
+.btn-guardar:hover:not(:disabled) {
+  background-color: #e85a2a;
+}
+
+.btn-guardar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

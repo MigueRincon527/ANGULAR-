@@ -1,0 +1,80 @@
+<div class="form-container">
+  <div class="form-card">
+
+    <div class="form-header">
+      <h1>Editar producto</h1>
+      <p>Actualiza la información del producto</p>
+    </div>
+
+    <div class="mensaje-error" *ngIf="errorMensaje">
+      ⚠️ {{ errorMensaje }}
+    </div>
+
+    <div class="mensaje-exito" *ngIf="exitoMensaje">
+      ✅ {{ exitoMensaje }}
+    </div>
+
+    <div class="cargando" *ngIf="cargando">
+      Cargando producto...
+    </div>
+
+    <form (ngSubmit)="guardarCambios()" #productoForm="ngForm" *ngIf="!cargando && !errorMensaje">
+
+      <div class="campo-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" />
+      </div>
+
+      <div class="campo-form">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" [(ngModel)]="descripcion" rows="3"></textarea>
+      </div>
+
+      <div class="fila-doble">
+        <div class="campo-form">
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" name="precio" [(ngModel)]="precio" min="0" />
+        </div>
+
+        <div class="campo-form">
+          <label for="cantidad">Cantidad</label>
+          <input type="number" id="cantidad" name="cantidad" [(ngModel)]="cantidad" min="0" />
+        </div>
+      </div>
+
+      <div class="campo-form">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" [(ngModel)]="categoria">
+          <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+
+      <div class="campo-form">
+        <label for="imagen">URL de imagen</label>
+        <input type="text" id="imagen" name="imagen" [(ngModel)]="imagen" />
+      </div>
+
+      <div class="campo-form">
+        <label for="sku">SKU</label>
+        <input type="text" id="sku" name="sku" [(ngModel)]="sku" />
+      </div>
+
+      <div class="campo-checkbox">
+        <label class="checkbox-label">
+          <input type="checkbox" name="disponible" [(ngModel)]="disponible" />
+          Disponible para la venta
+        </label>
+      </div>
+
+      <div class="botones-form">
+        <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn-guardar" [disabled]="guardando">
+          <span *ngIf="!guardando">Guardar cambios</span>
+          <span *ngIf="guardando">Guardando...</span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

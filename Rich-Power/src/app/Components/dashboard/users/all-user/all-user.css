@@ -1,0 +1,108 @@
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-header {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header h1 {
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-header p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.mensaje-error {
+  background-color: #fdecea;
+  color: #c0392b;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.cargando,
+.sin-usuarios {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.tabla-usuarios th {
+  background-color: #f7f7f7;
+  color: #555;
+  font-weight: 600;
+}
+
+.badge {
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-admin {
+  background-color: #fff0e6;
+  color: #ff6b35;
+}
+
+.acciones {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn-editar {
+  padding: 0.4rem 0.9rem;
+  background-color: #ff6b35;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.btn-editar:hover {
+  background-color: #e85a2a;
+}
+
+.btn-eliminar {
+  padding: 0.4rem 0.9rem;
+  background-color: #fff;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: #fdecea;
+}

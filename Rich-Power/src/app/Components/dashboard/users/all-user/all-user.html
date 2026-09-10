@@ -1,0 +1,48 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Todos los usuarios</h1>
+    <p>Gestiona los usuarios registrados en la plataforma</p>
+  </div>
+
+  <div class="mensaje-error" *ngIf="errorMensaje">
+    ⚠️ {{ errorMensaje }}
+  </div>
+
+  <div class="cargando" *ngIf="cargando">
+    Cargando usuarios...
+  </div>
+
+  <table class="tabla-usuarios" *ngIf="!cargando && usuarios.length > 0">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>
+          <span class="badge" [class.badge-admin]="usuario.role === 'admin'">
+            {{ usuario.role }}
+          </span>
+        </td>
+        <td class="acciones">
+          <a [routerLink]="['/dashboard/usuarios/editar', usuario._id]" class="btn-editar">
+            Editar
+          </a>
+          <button class="btn-eliminar" (click)="eliminarUsuario(usuario._id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sin-usuarios" *ngIf="!cargando && usuarios.length === 0">
+    No hay usuarios registrados.
+  </div>
+</div>

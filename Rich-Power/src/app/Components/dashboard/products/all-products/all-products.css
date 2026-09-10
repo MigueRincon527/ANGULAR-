@@ -1,0 +1,10 @@
+.etiqueta-agotado {
+  display: inline-block;
+  background-color: #fdecea;
+  color: #c0392b;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}

@@ -47,5 +47,17 @@ export class Auth{
     verfyUser(token : string){
         return this.http.get(`${this.apiUrl}/api/auth/verify/${token}`)
     }
+
+    getUserId(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        return payload.id || payload._id || null;
+    } catch (error) {
+        return null;
+    }
+}
 }
 
