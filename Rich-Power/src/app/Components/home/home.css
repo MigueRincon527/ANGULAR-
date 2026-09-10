@@ -1,0 +1,342 @@
+* {
+  box-sizing: border-box;
+}
+
+.home-container {
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+  overflow-x: hidden;
+}
+
+.titulo-seccion {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 4rem 6%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  flex-wrap: wrap;
+}
+
+.hero-contenido {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background-color: #ff6b35;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.texto-destacado {
+  color: #ff6b35;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: #d0d0d0;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-botones {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primario {
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-primario:hover {
+  background-color: #e85a2a;
+}
+
+.btn-secundario {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-secundario:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hero-imagen {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.hero-imagen img {
+  max-width: 100%;
+  border-radius: 16px;
+}
+
+/* CATEGORÍAS */
+.categorias {
+  padding: 4rem 6%;
+  background-color: #fafafa;
+}
+
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1.2rem;
+}
+
+.card-categoria {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card-categoria:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.icono-categoria {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* PRODUCTOS */
+.productos {
+  padding: 4rem 6%;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-producto {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease;
+}
+
+.card-producto:hover {
+  transform: translateY(-4px);
+}
+
+.etiqueta-producto {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #ff6b35;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+}
+
+.imagen-producto {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.categoria-producto {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  margin: 0 0 0.3rem 0;
+}
+
+.nombre-producto {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+  color: #222;
+  min-height: 44px;
+}
+
+.rating {
+  color: #ddd;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.rating .activa {
+  color: #ffb400;
+}
+
+.rating-numero {
+  color: #999;
+  font-size: 0.85rem;
+  margin-left: 0.3rem;
+}
+
+.precios {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.precio-actual {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #ff6b35;
+}
+
+.precio-anterior {
+  font-size: 0.9rem;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.btn-agregar {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-agregar:hover {
+  background-color: #333;
+}
+
+/* BENEFICIOS */
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 4rem 6%;
+  background-color: #f5f5f5;
+}
+
+.card-beneficio {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.icono-beneficio {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.card-beneficio h4 {
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.card-beneficio p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+  padding: 4rem 6%;
+  text-align: center;
+  color: #fff;
+}
+
+.newsletter-contenido {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+}
+
+.newsletter p {
+  margin-bottom: 1.5rem;
+  color: #fff5f0;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input-email {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-suscribir {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-suscribir:hover {
+  background-color: #333;
+}
+
+.mensaje-exito {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+}

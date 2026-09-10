@@ -1,0 +1,74 @@
+<footer class="footer-container">
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="footer-principal">
+    <div class="footer-grid">
+
+      <!-- MARCA + CONTACTO -->
+      <div class="footer-columna footer-marca">
+        <a routerLink="/" class="footer-logo">💪 <span>Rich-Power</span></a>
+        <p class="footer-descripcion">
+          Suplementos de alta calidad para deportistas y personas activas. Ciencia, resultados y confianza en cada producto.
+        </p>
+
+        <div class="footer-contacto">
+          <p><span>📍</span> {{ direccion }}</p>
+          <p><span>📞</span> {{ telefono }}</p>
+          <p><span>✉️</span> {{ correo }}</p>
+          <p><span>🕒</span> {{ horario }}</p>
+        </div>
+
+        <div class="footer-redes">
+            
+            <!--AGREGAR REDES-->
+
+        </div>
+      </div>
+
+      <!-- TIENDA -->
+      <div class="footer-columna">
+        <h4>Tienda</h4>
+        <ul>
+          <li *ngFor="let enlace of enlacesTienda">
+            <a [routerLink]="enlace.ruta">{{ enlace.etiqueta }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- EMPRESA -->
+      <div class="footer-columna">
+        <h4>Empresa</h4>
+        <ul>
+          <li *ngFor="let enlace of enlacesEmpresa">
+            <a [routerLink]="enlace.ruta">{{ enlace.etiqueta }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- AYUDA -->
+      <div class="footer-columna">
+        <h4>Ayuda</h4>
+        <ul>
+          <li *ngFor="let enlace of enlacesAyuda">
+            <a [routerLink]="enlace.ruta">{{ enlace.etiqueta }}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BARRA INFERIOR -->
+  <div class="footer-inferior">
+    <div class="footer-inferior-contenido">
+      <p class="footer-copyright">© {{ anioActual }} Rich-Power. Todos los derechos reservados.</p>
+
+      <div class="footer-metodos-pago">
+        <span *ngFor="let metodo of metodosPago" class="metodo-pago" [title]="metodo.nombre">
+          {{ metodo.icono }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+</footer>

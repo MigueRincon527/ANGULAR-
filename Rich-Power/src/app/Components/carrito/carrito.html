@@ -1,0 +1,50 @@
+<div class="carrito-container">
+  <h2 class="carrito-titulo">🛒 Mi Carrito de Compras</h2>
+
+  <div *ngIf="productos.length === 0" class="carrito-vacio">
+    <p>Tu carrito está vacío.</p>
+  </div>
+
+  <div *ngIf="productos.length > 0" class="carrito-contenido">
+    <div class="lista-productos">
+      <div class="item-producto" *ngFor="let producto of productos">
+        <img [src]="producto.imagen" [alt]="producto.nombre" class="item-imagen" />
+
+        <div class="item-info">
+          <h3>{{ producto.nombre }}</h3>
+          <p class="item-precio">{{ formatearPrecio(producto.precio) }}</p>
+        </div>
+
+        <div class="item-cantidad">
+          <button (click)="disminuirCantidad(producto)">-</button>
+          <span>{{ producto.cantidad }}</span>
+          <button (click)="aumentarCantidad(producto)">+</button>
+        </div>
+
+        <div class="item-subtotal">
+          {{ formatearPrecio(producto.precio * producto.cantidad) }}
+        </div>
+
+        <button class="btn-eliminar" (click)="eliminarProducto(producto.id)">✕</button>
+      </div>
+    </div>
+
+    <div class="resumen-carrito">
+      <div class="resumen-linea">
+        <span>Subtotal</span>
+        <span>{{ formatearPrecio(subtotal) }}</span>
+      </div>
+      <div class="resumen-linea">
+        <span>Envío</span>
+        <span>{{ formatearPrecio(envio) }}</span>
+      </div>
+      <div class="resumen-linea total">
+        <span>Total</span>
+        <span>{{ formatearPrecio(total) }}</span>
+      </div>
+
+      <button class="btn-comprar">Finalizar compra</button>
+      <button class="btn-vaciar" (click)="vaciarCarrito()">Vaciar carrito</button>
+    </div>
+  </div>
+</div>

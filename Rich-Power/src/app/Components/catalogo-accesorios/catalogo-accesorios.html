@@ -1,0 +1,81 @@
+<div class="catalogo-container">
+
+  <div class="catalogo-header">
+    <h1>Accesorios para Gym</h1>
+    <p>Todo lo que necesitas para complementar tu entrenamiento</p>
+  </div>
+
+  <div class="catalogo-layout">
+
+    <!-- FILTROS -->
+    <aside class="filtros-panel">
+      <div class="filtro-grupo">
+        <h3>Categoría</h3>
+        <button
+          *ngFor="let categoria of categorias"
+          class="filtro-opcion"
+          [class.filtro-activo]="categoria === categoriaSeleccionada"
+          (click)="seleccionarCategoria(categoria)"
+        >
+          {{ categoria }}
+        </button>
+      </div>
+
+      <div class="filtro-grupo">
+        <h3>Marca</h3>
+        <button
+          *ngFor="let marca of marcas"
+          class="filtro-opcion"
+          [class.filtro-activo]="marca === marcaSeleccionada"
+          (click)="seleccionarMarca(marca)"
+        >
+          {{ marca }}
+        </button>
+      </div>
+    </aside>
+
+    <!-- PRODUCTOS -->
+    <div class="productos-seccion">
+      <div class="barra-orden">
+        <span>{{ productosFiltrados.length }} productos</span>
+        <select [(ngModel)]="ordenSeleccionado">
+          <option value="relevancia">Relevancia</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="rating">Mejor calificados</option>
+        </select>
+      </div>
+
+      <div class="grid-productos">
+        <div class="card-producto" *ngFor="let producto of productosFiltrados">
+          <span class="etiqueta-producto" *ngIf="producto.etiqueta">{{ producto.etiqueta }}</span>
+          <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
+
+          <p class="marca-producto">{{ producto.marca }}</p>
+          <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+
+          <div class="rating">
+            <span *ngFor="let e of estrellas" [class.activa]="e <= producto.rating">★</span>
+            <span class="rating-numero">({{ producto.rating }})</span>
+          </div>
+
+          <div class="colores-mini">
+            <span *ngFor="let color of producto.colores" class="chip-color">{{ color }}</span>
+          </div>
+
+          <div class="precios">
+            <span class="precio-actual">{{ formatearPrecio(producto.precio) }}</span>
+            <span class="precio-anterior" *ngIf="producto.precioAnterior">{{ formatearPrecio(producto.precioAnterior) }}</span>
+          </div>
+
+          <button class="btn-agregar" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <p class="sin-resultados" *ngIf="productosFiltrados.length === 0">
+        No se encontraron productos con estos filtros.
+      </p>
+    </div>
+
+  </div>
+</div>

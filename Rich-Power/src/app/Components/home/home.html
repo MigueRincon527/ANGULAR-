@@ -1,0 +1,84 @@
+<div class="home-container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-contenido">
+      <span class="hero-badge">🔥 Ofertas de temporada</span>
+      <h1>Lleva tu rendimiento <span class="texto-destacado">al siguiente nivel</span></h1>
+      <p>Suplementos de alta calidad para deportistas y personas activas. Ciencia, resultados y confianza en cada producto.</p>
+      <div class="hero-botones">
+        <button class="btn-primario">Ver catálogo</button>
+        <button class="btn-secundario">Conócenos</button>
+      </div>
+    </div>
+    <div class="hero-imagen">
+      <img src="https://i.pinimg.com/1200x/4c/82/1a/4c821af48e33672f687084ec38b82292.jpg" alt="Suplementos" width="500px" height="500px" />
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categorias">
+    <h2 class="titulo-seccion">Explora por categoría</h2>
+    <div class="grid-categorias">
+      <div class="card-categoria" *ngFor="let cat of categorias" (click)="filtrarPorCategoria(cat)">
+        <span class="icono-categoria">{{ cat.icono }}</span>
+        <p>{{ cat.nombre }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DESTACADOS -->
+  <section class="productos">
+    <h2 class="titulo-seccion">Productos destacados</h2>
+    <div class="grid-productos">
+      <div class="card-producto" *ngFor="let producto of productosDestacados">
+        <span class="etiqueta-producto" *ngIf="producto.etiqueta">{{ producto.etiqueta }}</span>
+        <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
+        <p class="categoria-producto">{{ producto.categoria }}</p>
+        <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+
+        <div class="rating">
+          <span *ngFor="let e of estrellas" [class.activa]="e <= producto.rating">★</span>
+          <span class="rating-numero">({{ producto.rating }})</span>
+        </div>
+
+        <div class="precios">
+          <span class="precio-actual">{{ formatearPrecio(producto.precio) }}</span>
+          <span class="precio-anterior" *ngIf="producto.precioAnterior">{{ formatearPrecio(producto.precioAnterior) }}</span>
+        </div>
+
+        <button class="btn-agregar" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="beneficios">
+    <div class="card-beneficio" *ngFor="let b of beneficios">
+      <span class="icono-beneficio">{{ b.icono }}</span>
+      <h4>{{ b.titulo }}</h4>
+      <p>{{ b.descripcion }}</p>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-contenido">
+      <h2>Únete a nuestra comunidad fit</h2>
+      <p>Recibe descuentos exclusivos, tips de nutrición y novedades directamente en tu correo.</p>
+
+      <div class="newsletter-form" *ngIf="!suscrito">
+        <input
+          type="email"
+          [(ngModel)]="email"
+          placeholder="Ingresa tu correo electrónico"
+          class="input-email"
+        />
+        <button class="btn-suscribir" (click)="suscribirse()">Suscribirme</button>
+      </div>
+
+      <p class="mensaje-exito" *ngIf="suscrito">✅ ¡Gracias por suscribirte!</p>
+    </div>
+  </section>
+
+</div>

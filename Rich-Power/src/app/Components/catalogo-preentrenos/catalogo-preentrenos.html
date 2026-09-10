@@ -1,0 +1,87 @@
+<div class="catalogo-container">
+
+  <div class="catalogo-header">
+    <h1>Pre-Entrenos</h1>
+    <p>Energía, enfoque y bombeo muscular para llevar tus entrenamientos al límite</p>
+  </div>
+
+  <div class="catalogo-layout">
+
+    <!-- FILTROS -->
+    <aside class="filtros-panel">
+      <div class="filtro-grupo">
+        <h3>Cafeína</h3>
+        <button
+          class="filtro-opcion"
+          [class.filtro-activo]="filtroCafeina === 'todos'"
+          (click)="seleccionarFiltroCafeina('todos')"
+        >
+          Todos
+        </button>
+        <button
+          class="filtro-opcion"
+          [class.filtro-activo]="filtroCafeina === 'con'"
+          (click)="seleccionarFiltroCafeina('con')"
+        >
+          Con cafeína
+        </button>
+        <button
+          class="filtro-opcion"
+          [class.filtro-activo]="filtroCafeina === 'sin'"
+          (click)="seleccionarFiltroCafeina('sin')"
+        >
+          Sin cafeína
+        </button>
+      </div>
+    </aside>
+
+    <!-- PRODUCTOS -->
+    <div class="productos-seccion">
+      <div class="barra-orden">
+        <span>{{ productosFiltrados.length }} productos</span>
+        <select [(ngModel)]="ordenSeleccionado">
+          <option value="relevancia">Relevancia</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="rating">Mejor calificados</option>
+          <option value="cafeina">Mayor cafeína</option>
+        </select>
+      </div>
+
+      <div class="grid-productos">
+        <div class="card-producto" *ngFor="let producto of productosFiltrados">
+          <span class="etiqueta-producto" *ngIf="producto.etiqueta">{{ producto.etiqueta }}</span>
+          <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
+
+          <p class="tipo-producto">
+            {{ producto.conCafeina ? producto.miligramosCafeina + 'mg cafeína' : 'Sin cafeína' }}
+          </p>
+          <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+
+          <div class="rating">
+            <span *ngFor="let e of estrellas" [class.activa]="e <= producto.rating">★</span>
+            <span class="rating-numero">({{ producto.rating }})</span>
+          </div>
+
+          <p class="detalle-extra">{{ producto.porciones }} porciones</p>
+
+          <div class="sabores-mini">
+            <span *ngFor="let sabor of producto.sabores" class="chip-sabor">{{ sabor }}</span>
+          </div>
+
+          <div class="precios">
+            <span class="precio-actual">{{ formatearPrecio(producto.precio) }}</span>
+            <span class="precio-anterior" *ngIf="producto.precioAnterior">{{ formatearPrecio(producto.precioAnterior) }}</span>
+          </div>
+
+          <button class="btn-agregar" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <p class="sin-resultados" *ngIf="productosFiltrados.length === 0">
+        No se encontraron productos con estos filtros.
+      </p>
+    </div>
+
+  </div>
+</div>

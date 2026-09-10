@@ -1,0 +1,111 @@
+<div class="auth-container">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <span class="auth-logo">💪 FitSupps</span>
+      <h1>Crea tu cuenta</h1>
+      <p>Únete y empieza a mejorar tu rendimiento</p>
+    </div>
+
+    <div class="auth-error" *ngIf="errorMensaje">
+      ⚠️ {{ errorMensaje }}
+    </div>
+
+    <form (ngSubmit)="registrar()" #registroForm="ngForm">
+
+      <div class="campo-form">
+        <label for="nombre">Nombre completo</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="nombre"
+          placeholder="Tu nombre"
+          autocomplete="name"
+        />
+      </div>
+
+      <div class="campo-form">
+        <label for="email">Correo electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="tucorreo@ejemplo.com"
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="campo-form">
+        <label for="password">Contraseña</label>
+        <div class="input-password">
+          <input
+            [type]="mostrarPassword ? 'text' : 'password'"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="••••••••"
+            autocomplete="new-password"
+          />
+          <button type="button" class="btn-ver-password" (click)="togglePassword()">
+            {{ mostrarPassword ? '🙈' : '👁️' }}
+          </button>
+        </div>
+
+        <div class="medidor-password" *ngIf="password">
+          <div class="barras-password">
+            <span
+              *ngFor="let i of [1, 2, 3, 4]"
+              class="barra"
+              [style.background-color]="i <= fortalezaPassword.nivel ? fortalezaPassword.color : '#eee'"
+            ></span>
+          </div>
+          <span class="texto-fortaleza" [style.color]="fortalezaPassword.color">
+            {{ fortalezaPassword.texto }}
+          </span>
+        </div>
+      </div>
+
+      <div class="campo-form">
+        <label for="confirmarPassword">Confirmar contraseña</label>
+        <input
+          [type]="mostrarPassword ? 'text' : 'password'"
+          id="confirmarPassword"
+          name="confirmarPassword"
+          [(ngModel)]="confirmarPassword"
+          placeholder="••••••••"
+          autocomplete="new-password"
+        />
+      </div>
+
+      <div class="campo-checkbox">
+        <label class="checkbox-label">
+          <input type="checkbox" name="aceptaTerminos" [(ngModel)]="aceptaTerminos" />
+          Acepto los <a href="#">términos y condiciones</a> y la <a href="#">política de privacidad</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="cargando">
+        <span *ngIf="!cargando">Crear cuenta</span>
+        <span *ngIf="cargando">Creando cuenta...</span>
+      </button>
+
+      <div class="divisor">
+        <span>o regístrate con</span>
+      </div>
+
+      <button type="button" class="btn-google" (click)="registrarConGoogle()">
+        <span class="icono-google">G</span>
+        Registrarme con Google
+      </button>
+
+    </form>
+
+    <p class="auth-footer">
+      ¿Ya tienes una cuenta?
+      <a routerLink="/login">Inicia sesión aquí</a>
+    </p>
+
+  </div>
+</div>
