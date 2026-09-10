@@ -1,17 +1,22 @@
-*{
-    margin: 0 auto;
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px clamp(16px, 5vw, 64px);
     background-color: #202020;
     color: #ffffff;
 }
 
+.brand {
+    flex-shrink: 0;
+}
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
-    padding: 20px;
+h1 {
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    white-space: nowrap;
 }
 
 span {
@@ -19,63 +24,73 @@ span {
 }
 
 .buscar {
-    width: 500px;
+    display: flex;
+    flex: 1 1 360px;
+    max-width: 500px;
+    gap: 8px;
 }
 
 input {
+    min-width: 0;
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
     border: solid #000 1px;
     border-radius: 10px;
     background-color: #ffffff;
     color: #000;
-    padding: 15px;
+    padding: 8px 12px;
 }
 
 .buttons {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
+
 .btn {
     background-color: #ff6b35;
     color: #ffffff;
     height: 35px;
-    width: 100px;
+    min-width: 82px;
     border: #000 solid;
     border-radius: 15px;
-
 }
 
 .carrito {
+    width: 40px;
+    height: 35px;
     color: #ff6b35;
     background-color: #ffffff;
     font-size: 20px;
     border-radius: 40px;
-}
-
-nav {
-    max-width: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1px;
-    padding: 20px;
-}
-
-nav a {
-    display: flex;
-    justify-content: center;
-    border: solid #ff6b35 1px;
-    width: 80px;
-    height: 20px;
-    border-radius: 10px;
-    padding: 8px;
-    color: #ff6b35;
-    text-decoration: none;
-}
-
-nav a:hover {
-    background-color: #ffffff;
+    border: 0;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 700px) {
+    .container {
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 16px;
+    }
+
+    .buscar {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+
+    .buttons {
+        gap: 6px;
+    }
+
+    .buttons .btn {
+        min-width: 68px;
+        padding: 0 8px;
+    }
 }

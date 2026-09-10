@@ -1,34 +1,25 @@
-*{
-    margin: 0 auto;
-    background-color: #202020;
-    color: #ffffff;
-}
-
-
-.container {
+.nav {
+    position: relative;
+    z-index: 10;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: row;
-    gap: 10px;
-    padding: 20px;
+    background-color: #202020;
 }
 
 nav {
-    max-width: 600px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 1px;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 20px 20px;
 }
 
 nav a {
     display: flex;
     justify-content: center;
     border: solid #ff6b35 1px;
-    width: 80px;
-    height: 20px;
+    min-width: 80px;
     border-radius: 10px;
     padding: 8px;
     color: #ff6b35;
@@ -41,4 +32,62 @@ nav a:hover {
 
 a {
     text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .nav {
+        justify-content: flex-start;
+        min-height: 52px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        margin: 4px 0 4px 16px;
+        padding: 8px;
+        border: 1px solid #ff6b35;
+        border-radius: 8px;
+        background-color: #202020;
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #ff6b35;
+    }
+
+    nav {
+        position: absolute;
+        top: 52px;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: min(78vw, 280px);
+        box-sizing: border-box;
+        padding: 12px;
+        border-right: 1px solid #ff6b35;
+        border-bottom: 1px solid #ff6b35;
+        background-color: #202020;
+        box-shadow: 4px 6px 12px rgb(0 0 0 / 35%);
+    }
+
+    nav.menu-abierto {
+        display: flex;
+    }
+
+    nav a {
+        width: auto;
+        box-sizing: border-box;
+    }
 }
