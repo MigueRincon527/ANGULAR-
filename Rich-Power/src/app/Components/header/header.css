@@ -94,3 +94,14 @@ a {
         padding: 0 8px;
     }
 }
+
+.btn-logout {
+    background-color: transparent;
+    border: #ff6b35 solid 1px;
+    color: #ff6b35;
+}
+
+.btn-logout:hover {
+    background-color: #ff6b35;
+    color: #ffffff;
+}

@@ -236,3 +236,12 @@
 .auth-footer a:hover {
   text-decoration: underline;
 }
+
+.auth-exito {
+  background-color: #e6f7ee;
+  color: #1e8e5a;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}

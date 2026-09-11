@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Auth } from '../../services/auth'; // ajusta la ruta según tu estructura
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-registro',
@@ -21,6 +21,7 @@ export class Registro {
 
   cargando: boolean = false;
   errorMensaje: string = '';
+  exitoMensaje: string = '';
 
   private router = inject(Router);
   private authService = inject(Auth);
@@ -82,6 +83,7 @@ export class Registro {
 
     this.cargando = true;
     this.errorMensaje = '';
+    this.exitoMensaje = '';
 
     const nuevoUsuario = {
       nombre: this.nombre,
@@ -93,13 +95,13 @@ export class Registro {
       next: (response: any) => {
         this.cargando = false;
 
-        // authController.registrar ya devuelve token + usuario,
-        // así que podemos loguear al usuario automáticamente
         const token = response.token;
         const rol = response.usuario.rol;
 
         this.authService.saveToken(token, rol);
-        this.router.navigate(['/home']);
+        this.exitoMensaje = `¡Registro exitoso! Bienvenido, ${response.usuario.nombre}.`;
+
+        setTimeout(() => this.router.navigate(['/home']), 1500);
       },
       error: (err) => {
         this.cargando = false;

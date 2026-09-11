@@ -9,33 +9,27 @@ export class Productos {
     private apiUrl: string = 'http://localhost:3000';
     private http = inject(HttpClient);
 
-    // GET - Obtener todos los productos
     getProductos() {
-        return this.http.get(`${this.apiUrl}/routes/productosRoutes`);
+        return this.http.get(`${this.apiUrl}/productos`);          // antes: /routes/productosRoutes
     }
 
-    // GET - Obtener productos por categoría
     getProductosPorCategoria(categoria: string) {
-        return this.http.get(`${this.apiUrl}/routes/productosRoutes/categoria/${categoria}`);
+        return this.http.get(`${this.apiUrl}/productos/categoria/${categoria}`);
     }
 
-    // GET - Obtener un producto por ID
     getProductoPorId(id: string) {
-        return this.http.get(`${this.apiUrl}/routes/productosRoutes/${id}`);
+        return this.http.get(`${this.apiUrl}/productos/${id}`);
     }
 
-    // POST - Crear un nuevo producto
     crearProducto(data: any) {
-        return this.http.post(`${this.apiUrl}/routes/productosRoutes`, data);
+        return this.http.post(`${this.apiUrl}/productos`, data);
     }
 
-    // PUT - Actualizar un producto
     actualizarProducto(id: string, data: any) {
-        return this.http.put(`${this.apiUrl}/routes/productosRoutes/${id}`, data);
+        return this.http.put(`${this.apiUrl}/productos/${id}`, data);
     }
 
-    // DELETE - Eliminar un producto
     eliminarProducto(id: string) {
-        return this.http.delete(`${this.apiUrl}/routes/productosRoutes/${id}`);
+        return this.http.delete(`${this.apiUrl}/productos/${id}`);
     }
 }

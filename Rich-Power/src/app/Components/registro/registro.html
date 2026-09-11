@@ -11,6 +11,10 @@
       ⚠️ {{ errorMensaje }}
     </div>
 
+    <div class="auth-exito" *ngIf="exitoMensaje">
+      ✅ {{ exitoMensaje }}
+    </div>
+
     <form (ngSubmit)="registrar()" #registroForm="ngForm">
 
       <div class="campo-form">

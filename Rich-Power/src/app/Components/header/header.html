@@ -7,8 +7,13 @@
         <button class="btn">Buscar</button>
     </div>
     <div class="buttons">
-        <button class="btn" routerLink="/login">Login</button>
-        <button class="btn" routerLink="/register">Registrate</button>
+        <ng-container *ngIf="!estaLogueado">
+            <button class="btn" routerLink="/login">Login</button>
+            <button class="btn" routerLink="/register">Registrate</button>
+        </ng-container>
+
+        <button class="btn" *ngIf="estaLogueado" (click)="cerrarSesion()">Cerrar sesión</button>
+
         <button class="carrito" routerLink="/carrito" aria-label="Abrir carrito">&#128722;</button>
     </div>
 </header>

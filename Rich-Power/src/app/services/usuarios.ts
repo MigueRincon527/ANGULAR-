@@ -9,28 +9,23 @@ export class Usuarios {
     private apiUrl: string = 'http://localhost:3000';
     private http = inject(HttpClient);
 
-    // GET - Obtener todos los usuarios (público)
     getUsuarios() {
-        return this.http.get(`${this.apiUrl}/routes/usuariosRoutes`);
+        return this.http.get(`${this.apiUrl}/usuarios`);          // antes: /routes/usuariosRoutes
     }
 
-    // GET - Obtener un usuario por ID (protegida: requiere token)
     getUsuarioPorId(id: string) {
-        return this.http.get(`${this.apiUrl}/routes/usuariosRoutes/${id}`);
+        return this.http.get(`${this.apiUrl}/usuarios/${id}`);
     }
 
-    // POST - Crear un nuevo usuario (público - esto es básicamente tu registro)
     crearUsuario(data: any) {
-        return this.http.post(`${this.apiUrl}/routes/usuariosRoutes`, data);
+        return this.http.post(`${this.apiUrl}/usuarios`, data);
     }
 
-    // PUT - Actualizar un usuario (protegida: solo admin)
     actualizarUsuario(id: string, data: any) {
-        return this.http.put(`${this.apiUrl}/routes/usuariosRoutes/${id}`, data);
+        return this.http.put(`${this.apiUrl}/usuarios/${id}`, data);
     }
 
-    // DELETE - Eliminar un usuario (protegida: solo admin)
     eliminarUsuario(id: string) {
-        return this.http.delete(`${this.apiUrl}/routes/usuariosRoutes/${id}`);
+        return this.http.delete(`${this.apiUrl}/usuarios/${id}`);
     }
 }
