@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, Router } from "@angular/router";
 import { CommonModule } from '@angular/common';
-import { Auth } from '../../services/auth'; // ajusta la ruta según tu estructura
+import { Auth } from '../../services/auth';
 
 @Component({
   imports: [RouterLink, CommonModule],
@@ -15,6 +15,18 @@ export class Header {
 
   get estaLogueado(): boolean {
     return this.authService.isLoggedIn();
+  }
+
+  get esAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+  irAPerfil(): void {
+    if (this.esAdmin) {
+      this.router.navigate(['/dashboard/usuarios']);
+    } else {
+      this.router.navigate(['/dashboard/usuarios/mi-perfil']);
+    }
   }
 
   cerrarSesion(): void {

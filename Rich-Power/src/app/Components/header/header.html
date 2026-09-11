@@ -12,8 +12,11 @@
             <button class="btn" routerLink="/register">Registrate</button>
         </ng-container>
 
-        <button class="btn" *ngIf="estaLogueado" (click)="cerrarSesion()">Cerrar sesión</button>
-
         <button class="carrito" routerLink="/carrito" aria-label="Abrir carrito">&#128722;</button>
+        <ng-container *ngIf="estaLogueado">
+            <button class="perfil" (click)="irAPerfil()" aria-label="Ir a mi perfil">&#128100;</button>
+            <button class="btn" (click)="cerrarSesion()">Cerrar sesión</button>
+        </ng-container>
+
     </div>
 </header>
