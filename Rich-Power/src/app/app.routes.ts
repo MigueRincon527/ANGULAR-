@@ -8,7 +8,10 @@ import { CatalogoPreentrenos } from './Components/catalogo-preentrenos/catalogo-
 import { CatalogoAccesorios } from './Components/catalogo-accesorios/catalogo-accesorios';
 import { Carrito } from './Components/carrito/carrito';
 import { Dashboard } from './Components/dashboard/admin/dashboard';
+import { MyUser } from './Components/dashboard/users/my-user/my-user';
 import { adminGuard } from './guards/admin.guards';
+import { authGuard } from './guards/auth.guards';
+import { Component } from '@angular/core';
 
 export const routes: Routes = [
     //Ruta principal Home
@@ -22,11 +25,13 @@ export const routes: Routes = [
     {path : 'pre-entrenos', component : CatalogoPreentrenos},
     {path : 'accesorios', component : CatalogoAccesorios},
     {path : 'carrito', component : Carrito},
+    {path : 'my-user', component : MyUser},
 
-    //ruta protegida
+    //ruta protegida - solo admin
     {path : 'dashboard', component : Dashboard, canActivate : [adminGuard]},
 
-    //Ruta principal Home
-    {path :'', redirectTo : 'home', pathMatch: 'full'},
+    //ruta protegida - cualquier usuario logueado
+    {path : 'dashboard/users/my-user', component : MyUser, canActivate : [authGuard]},
+
     {path : '**', redirectTo : 'home' }
 ];

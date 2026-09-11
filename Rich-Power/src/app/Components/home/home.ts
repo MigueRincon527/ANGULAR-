@@ -52,7 +52,7 @@ export class Home {
       categoria: 'Proteínas',
       precio: 189000,
       precioAnterior: 220000,
-      imagen: 'https://via.placeholder.com/300x300?text=Whey+Protein',
+      imagen: 'https://i.pinimg.com/1200x/45/b1/4a/45b14a58c1aa48c2746085c978d489f4.jpg',
       rating: 4.8,
       etiqueta: 'Más vendido'
     },
@@ -61,7 +61,7 @@ export class Home {
       nombre: 'Creatina Monohidratada 500g',
       categoria: 'Creatina',
       precio: 95000,
-      imagen: 'https://via.placeholder.com/300x300?text=Creatina',
+      imagen: 'https://i.pinimg.com/736x/1f/f5/3a/1ff53a47811bc11cc515e5d1162bf0a1.jpg',
       rating: 4.9,
       etiqueta: 'Nuevo'
     },
@@ -71,7 +71,7 @@ export class Home {
       categoria: 'Pre-entreno',
       precio: 130000,
       precioAnterior: 155000,
-      imagen: 'https://via.placeholder.com/300x300?text=Pre-Entreno',
+      imagen: 'https://i.pinimg.com/736x/df/dd/29/dfdd290dc41ff9530709a3591cd29e3a.jpg',
       rating: 4.6,
       etiqueta: '-15%'
     },
@@ -80,7 +80,7 @@ export class Home {
       nombre: 'Multivitamínico Diario',
       categoria: 'Vitaminas',
       precio: 65000,
-      imagen: 'https://via.placeholder.com/300x300?text=Multivitaminico',
+      imagen: 'https://i.pinimg.com/1200x/e8/86/a2/e886a272dacde86cfa8724100dd23521.jpg',
       rating: 4.7
     }
   ];

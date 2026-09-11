@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Usuarios } from '../../../../services/usuarios';
 import { Auth } from '../../../../services/auth';
 
 @Component({
@@ -12,7 +11,6 @@ import { Auth } from '../../../../services/auth';
   styleUrls: ['./my-user.css']
 })
 export class MyUser implements OnInit {
-  private usuariosService = inject(Usuarios);
   private authService = inject(Auth);
 
   usuario: any = null;
@@ -20,21 +18,13 @@ export class MyUser implements OnInit {
   errorMensaje: string = '';
 
   ngOnInit(): void {
-    this.cargarMiUsuario();
+    this.cargarMiPerfil();
   }
 
-  cargarMiUsuario(): void {
-    const id = this.authService.getUserId();
-
-    if (!id) {
-      this.errorMensaje = 'No se pudo identificar tu usuario. Vuelve a iniciar sesión.';
-      this.cargando = false;
-      return;
-    }
-
-    this.usuariosService.getUsuarioPorId(id).subscribe({
-      next: (data: any) => {
-        this.usuario = data;
+  cargarMiPerfil(): void {
+    this.authService.getMe().subscribe({
+      next: (response: any) => {
+        this.usuario = response.usuario;
         this.cargando = false;
       },
       error: (err) => {

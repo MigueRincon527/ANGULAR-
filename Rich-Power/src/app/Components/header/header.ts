@@ -17,15 +17,15 @@ export class Header {
     return this.authService.isLoggedIn();
   }
 
-  get esAdmin(): boolean {
+  get isAdmin(): boolean {
     return this.authService.isAdmin();
   }
 
   irAPerfil(): void {
-    if (this.esAdmin) {
-      this.router.navigate(['/dashboard/usuarios']);
+    if (this.isAdmin) {
+      this.router.navigate(['/dashboard']);
     } else {
-      this.router.navigate(['/dashboard/usuarios/mi-perfil']);
+      this.router.navigate(['/dashboard/users/my-user']);
     }
   }
 

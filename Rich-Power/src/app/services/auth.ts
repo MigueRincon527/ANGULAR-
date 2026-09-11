@@ -10,17 +10,16 @@ export class Auth{
     private apiUrl : string = 'http://localhost:3000';
     private http = inject(HttpClient);
 
-    // Agregar en auth.ts, dentro de la clase Auth
-
     register(data: any) {
-    return this.http.post(`${this.apiUrl}/api/auth/register`, data);
+        return this.http.post(`${this.apiUrl}/api/auth/register`, data);
     }
 
-    /*register(data : any){
-        return this.http.post(this.apiUrl + '/routes/usuariosRoutes', data)
-    }*/
     login (data : any){
         return this.http.post(this.apiUrl + '/api/auth/login', data)
+    }
+
+    getMe() {
+        return this.http.get(`${this.apiUrl}/api/auth/me`);
     }
 
     saveToken(token : string, role : string){
@@ -53,18 +52,4 @@ export class Auth{
     verfyUser(token : string){
         return this.http.get(`${this.apiUrl}/api/auth/verify/${token}`)
     }
-
-    getUserId(): string | null {
-    const token = this.getToken();
-    if (!token) return null;
-
-    try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        return payload.id || payload._id || null;
-    } catch (error) {
-        return null;
-    }
 }
-
-}
-

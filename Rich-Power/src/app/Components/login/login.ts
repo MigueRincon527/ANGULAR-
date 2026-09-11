@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Auth } from '../../services/auth'; // ajusta la ruta según tu estructura de carpetas
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -64,18 +64,23 @@ export class Login {
       next: (response: any) => {
         this.cargando = false;
 
-        // Ajusta 'token' y 'role' según lo que realmente devuelva tu backend
         const token = response.token;
-        const role = response.role ?? response.user?.role;
+        const rol = response.usuario.rol; // <- corregido
 
-        this.authService.saveToken(token, role);
+        this.authService.saveToken(token, rol);
 
-        // Redirige siempre al home tras un login exitoso
-        this.router.navigate(['/home']);
+        alert(`¡Bienvenido de nuevo, ${response.usuario.nombre}!`);
+
+        // Redirige según el rol
+        if (rol === 'admin') {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/dashboard/users/my-user']);
+        }
       },
       error: (err) => {
         this.cargando = false;
-        this.errorMensaje = err.error?.message || 'Credenciales incorrectas. Intenta de nuevo.';
+        this.errorMensaje = err.error?.mensaje || 'Credenciales incorrectas. Intenta de nuevo.';
       }
     });
   }

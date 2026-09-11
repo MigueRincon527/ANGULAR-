@@ -30,13 +30,13 @@
 
       <div class="dato">
         <span class="etiqueta">Rol</span>
-        <span class="valor badge" [class.badge-admin]="usuario.role === 'admin'">
-          {{ usuario.role }}
+        <span class="valor badge" [class.badge-admin]="usuario.rol === 'admin'">
+          {{ usuario.rol }}
         </span>
       </div>
     </div>
 
-    <a [routerLink]="['/dashboard/usuarios/editar', usuario._id]" class="btn-editar-perfil">
+    <a [routerLink]="['/dashboard/usuarios/editar', usuario.id]" class="btn-editar-perfil">
       Editar mi información
     </a>
   </div>
